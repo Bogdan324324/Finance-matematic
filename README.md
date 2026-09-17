@@ -37,6 +37,8 @@
 
 - `index.html` — главный файл презентации
 - `css/theme.css` — файл темы оформления
+- `table-generator.css` — файл темы для таблицы дней
+- `calculator` — файл темы для расчета процентов(3 вида)
 - `slides/` — папка с Markdown файлами слайдов
 - `plugin/` — плагины Reveal.js (reveal, markdown, highlight, menu)
 - `images/` — папка для изображений
