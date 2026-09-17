@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор таблицы дней года</title>
+    <link rel="stylesheet" href="./css/table-generator.css">
+</head>
+<body>
+    <h1>📅 ТАБЛИЦА ПОРЯДКОВЫХ НОМЕРОВ ДНЕЙ В ГОДУ</h1>
+    
+    <div class="controls">
+        <button onclick="generateTable()">Сгенерировать таблицу</button>
+    </div>
+    
+    <div class="table-container" id="tableContainer">
+        <p style="text-align: center; color: #888; padding: 20px; font-size: 0.9em;">
+            Нажмите кнопку для генерации таблицы (невисокосный год)
+        </p>
+    </div>
+    
+    <div class="info">
+        Функция: daysInMonth(month) = 32 - new Date(2023, month, 32).getDate()
+    </div>
+
+    <script>
+        function daysInMonth(month) {
+            return 32 - new Date(2023, month, 32).getDate();
+        }
+        
+        function generateTable() {
+            const monthNames = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 
+                                'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+            
+            const months = [];
+            for (let m = 0; m < 12; m++) {
+                months.push(daysInMonth(m));
+            }
+            
+            const cumulativeDays = [0];
+            for (let m = 1; m < 12; m++) {
+                cumulativeDays.push(cumulativeDays[m-1] + months[m-1]);
+            }
+            
+            let table = '<table><thead><tr><th>№</th>';
+            monthNames.forEach(name => {
+                table += '<th>' + name + '</th>';
+            });
+            table += '</tr></thead><tbody>';
+            
+            for (let day = 1; day <= 31; day++) {
+                table += '<tr><td>' + day + '</td>';
+                
+                for (let month = 0; month < 12; month++) {
+                    if (day <= months[month]) {
+                        const dayNumber = cumulativeDays[month] + day;
+                        table += '<td>' + dayNumber + '</td>';
+                    } else {
+                        table += '<td>—</td>';
+                    }
+                }
+                
+                table += '</tr>';
+            }
+            
+            table += '</tbody></table>';
+            
+            document.getElementById('tableContainer').innerHTML = table;
+        }
+    </script>
+</body>
+</html>

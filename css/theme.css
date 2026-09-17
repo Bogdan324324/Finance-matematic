@@ -1,0 +1,348 @@
+/* ============================================
+   КАСТОМНАЯ ТЕМА ДЛЯ ФИНАНСОВОЙ МАТЕМАТИКИ
+   ============================================ */
+
+/* Базовые стили */
+.reveal {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a2e;
+    font-size: 24px;
+}
+
+/* Заголовки */
+.reveal h1 {
+    color: #ffffff;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.reveal h2 {
+    color: #ffffff;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.reveal h3 {
+    color: #4da6ff;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.reveal h4 {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+/* Текст и списки */
+.reveal p,
+.reveal li {
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+/* Ссылки */
+.reveal a {
+    color: #4da6ff;
+    text-decoration: none;
+}
+
+.reveal a:hover {
+    text-decoration: underline;
+}
+
+/* Код и pre */
+.reveal pre {
+    background: #16213e;
+    box-shadow: none;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 0.65em;
+    max-height: 60vh;
+}
+
+.reveal code {
+    background: #16213e;
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.reveal pre code {
+    background: none;
+    padding: 0;
+    font-size: 1em;
+}
+
+/* Таблицы */
+.reveal table {
+    font-size: 0.55em;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px auto;
+}
+
+.reveal table td, 
+.reveal table th {
+    padding: 2px 4px;
+    border: 1px solid #4da6ff;
+    text-align: center;
+    color: #ffffff;
+    vertical-align: middle;
+}
+
+.reveal table th {
+    background: #16213e;
+    color: #4da6ff;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Меню */
+.slide-menu {
+    background: #1a1a2e !important;
+}
+
+.slide-menu-items {
+    background: #1a1a2e !important;
+}
+
+.slide-menu-item {
+    color: #ffffff !important;
+    font-size: 14px;
+}
+
+.slide-menu-item.active {
+    background: #4da6ff !important;
+    color: #ffffff !important;
+}
+
+/* Убираем скролл полностью */
+.reveal .slides {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.reveal .slides section {
+    overflow: hidden;
+    max-height: 100vh;
+    padding: 20px 40px;
+}
+
+/* Изображения */
+.reveal img {
+    max-width: 75%;
+    max-height: 65vh;
+    margin: 15px auto;
+    display: block;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Списки */
+.reveal ul,
+.reveal ol {
+    margin: 10px 0;
+    padding-left: 30px;
+}
+
+.reveal ul li,
+.reveal ol li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Стили для титульного слайда */
+.reveal .slides section[data-markdown="./slides/title.md"] h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.reveal .slides section[data-markdown="./slides/title.md"] h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.reveal .slides section[data-markdown="./slides/title.md"] p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+/* Стили для встроенного калькулятора */
+.calculator-container {
+    background: #16213e;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.calc-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.calc-row label {
+    color: #4da6ff;
+    font-size: 0.9em;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+.calc-row input,
+.calc-row select {
+    flex: 1;
+    padding: 8px 12px;
+    border: 2px solid #4da6ff;
+    border-radius: 6px;
+    background: #1a1a2e;
+    color: #ffffff;
+    font-size: 0.85em;
+}
+
+.calc-row input:focus,
+.calc-row select:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.calc-row span {
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.calculator-container button {
+    width: 100%;
+    padding: 12px;
+    background: #4da6ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.calculator-container button:hover {
+    background: #3d8fd9;
+}
+
+.calc-result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #1a1a2e;
+    border-radius: 8px;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Стили для слайдов с примерами */
+.reveal .slides section[data-markdown="./slides/example1.md"] p,
+.reveal .slides section[data-markdown="./slides/example2.md"] p,
+.reveal .slides section[data-markdown="./slides/example3.md"] p,
+.reveal .slides section[data-markdown="./slides/example4.md"] p,
+.reveal .slides section[data-markdown="./slides/example5.md"] p,
+.reveal .slides section[data-markdown="./slides/example6.md"] p,
+.reveal .slides section[data-markdown="./slides/example7.md"] p,
+.reveal .slides section[data-markdown="./slides/example8.md"] p,
+.reveal .slides section[data-markdown="./slides/example9.md"] p,
+.reveal .slides section[data-markdown="./slides/example10.md"] p,
+.reveal .slides section[data-markdown="./slides/example11.md"] p,
+.reveal .slides section[data-markdown="./slides/example12.md"] p {
+    font-size: 1.1em;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.reveal .slides section[data-markdown="./slides/example1.md"] .math,
+.reveal .slides section[data-markdown="./slides/example2.md"] .math,
+.reveal .slides section[data-markdown="./slides/example3.md"] .math,
+.reveal .slides section[data-markdown="./slides/example4.md"] .math,
+.reveal .slides section[data-markdown="./slides/example5.md"] .math,
+.reveal .slides section[data-markdown="./slides/example6.md"] .math,
+.reveal .slides section[data-markdown="./slides/example7.md"] .math,
+.reveal .slides section[data-markdown="./slides/example8.md"] .math,
+.reveal .slides section[data-markdown="./slides/example9.md"] .math,
+.reveal .slides section[data-markdown="./slides/example10.md"] .math,
+.reveal .slides section[data-markdown="./slides/example11.md"] .math,
+.reveal .slides section[data-markdown="./slides/example12.md"] .math {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+/* Для слайда с исходным кодом - максимально компактно */
+.reveal .slides section[data-markdown="./slides/source-code.md"] {
+    font-size: 0.5em !important;
+    padding: 10px 20px !important;
+}
+
+.reveal .slides section[data-markdown="./slides/source-code.md"] pre {
+    font-size: 0.75em !important;
+    padding: 5px !important;
+    margin: 5px 0 !important;
+}
+
+.reveal .slides section[data-markdown="./slides/source-code.md"] code {
+    font-size: 0.85em !important;
+}
+
+.reveal .slides section[data-markdown="./slides/source-code.md"] h2 {
+    font-size: 1.3em !important;
+    margin-bottom: 15px !important;
+}
+
+.reveal .slides section[data-markdown="./slides/source-code.md"] h3 {
+    font-size: 1em !important;
+    margin: 10px 0 5px 0 !important;
+}
+
+/* Адаптация для маленьких экранов */
+@media screen and (max-width: 1024px) {
+    .reveal {
+        font-size: 20px;
+    }
+    
+    .reveal h1 {
+        font-size: 1.8em;
+    }
+    
+    .reveal h2 {
+        font-size: 1.5em;
+    }
+    
+    .reveal h3 {
+        font-size: 1.2em;
+    }
+    
+    .reveal p,
+    .reveal li {
+        font-size: 0.8em;
+    }
+    
+    .reveal table {
+        font-size: 0.45em;
+    }
+}

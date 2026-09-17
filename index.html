@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансовая математика</title>
+    
+    <!-- Основные стили Reveal.js -->
+    <link rel="stylesheet" href="./plugin/reveal/reveal.css">
+    <link rel="stylesheet" href="./plugin/reveal/theme/black.css">
+    
+    <!-- Стили плагинов -->
+    <link rel="stylesheet" href="./plugin/reveal/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="./plugin/menu/menu.css">
+    
+    <!-- Наша тема -->
+    <link rel="stylesheet" href="./css/theme.css">
+    
+    <!-- KaTeX для формул -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Слайд 1: Титульный -->
+            <section data-markdown="./slides/title.md"></section>
+            
+            <!-- Слайд 2: Определения -->
+            <section data-markdown="./slides/definitions.md"></section>
+            
+            <!-- Слайд 3: Формула наращения простые -->
+            <section data-markdown="./slides/simple-accrual.md"></section>
+            
+            <!-- Слайд 4: Формула дисконтирования простые -->
+            <section data-markdown="./slides/simple-discount.md"></section>
+            
+            <!-- Слайд 5: Формула наращения сложные -->
+            <section data-markdown="./slides/compound-accrual.md"></section>
+            
+            <!-- Слайд 6: Формула дисконтирования сложные -->
+            <section data-markdown="./slides/compound-discount.md"></section>
+            
+            <!-- Слайд 7: 3 практики -->
+            <section data-markdown="./slides/three-practices.md"></section>
+            
+            <!-- Слайды 8-19: Примеры -->
+            <section data-markdown="./slides/example1.md"></section>
+            <section data-markdown="./slides/example2.md"></section>
+            <section data-markdown="./slides/example3.md"></section>
+            <section data-markdown="./slides/example4.md"></section>
+            <section data-markdown="./slides/example5.md"></section>
+            <section data-markdown="./slides/example6.md"></section>
+            <section data-markdown="./slides/example7.md"></section>
+            <section data-markdown="./slides/example8.md"></section>
+            <section data-markdown="./slides/example9.md"></section>
+            <section data-markdown="./slides/example10.md"></section>
+            <section data-markdown="./slides/example11.md"></section>
+            <section data-markdown="./slides/example12.md"></section>
+            
+            <!-- Слайд 20: Описание таблицы дней -->
+            <section data-markdown="./slides/day-table.md"></section>
+            
+            <!-- Слайд 21: Программа генерации таблицы (iframe) -->
+<section style="padding: 10px 20px;">
+    <h2 style="font-size: 1.3em; margin-bottom: 10px;">ГЕНЕРАЦИЯ ТАБЛИЦЫ ПОРЯДКОВЫХ НОМЕРОВ ДНЕЙ</h2>
+    <iframe src="day-table-generator.html" 
+            style="width: 100%; height: 85vh; border: none; border-radius: 8px;">
+    </iframe>
+</section>
+            
+            <!-- Слайд 22: Программа расчёта кредита -->
+            <section>
+                <h2>ПРОГРАММА РАСЧЁТА КРЕДИТА</h2>
+                <div class="calculator-container">
+                    <div class="calc-row">
+                        <label>P =</label>
+                        <input type="number" id="calc-p" placeholder="100000" min="0">
+                    </div>
+                    <div class="calc-row">
+                        <label>i =</label>
+                        <input type="number" id="calc-i" placeholder="10" min="0" step="0.1">
+                        <span>%</span>
+                    </div>
+                    <div class="calc-row">
+                        <label>Срок (дней):</label>
+                        <input type="number" id="calc-days" placeholder="180" min="30" max="3650">
+                    </div>
+                    <div class="calc-row">
+                        <label>Практика:</label>
+                        <select id="calc-practice">
+                            <option value="german">Германская</option>
+                            <option value="french">Французская</option>
+                            <option value="english">Английская</option>
+                        </select>
+                    </div>
+                    <div class="calc-row">
+                        <label>Тип:</label>
+                        <select id="calc-type">
+                            <option value="simple">Простые</option>
+                            <option value="compound">Сложные</option>
+                        </select>
+                    </div>
+                    <button onclick="calculateCredit()">Рассчитать</button>
+                    <div id="calc-result" class="calc-result"></div>
+                </div>
+            </section>
+            
+            <!-- Слайд 23: Исходный код -->
+            <section data-markdown="./slides/source-code.md"></section>
+            
+            <!-- Слайды 24-26: Весёлые картинки -->
+            <section data-markdown="./slides/funny1.md"></section>
+            <section data-markdown="./slides/funny2.md"></section>
+            <section data-markdown="./slides/funny3.md"></section>
+            
+            <!-- Слайд 27: Заключение -->
+            <section data-markdown="./slides/conclusion.md"></section>
+            
+        </div>
+    </div>
+
+    <!-- Скрипты Reveal.js -->
+    <script src="./plugin/reveal/reveal.js"></script>
+    <script src="./plugin/reveal/plugin/markdown.js"></script>
+    <script src="./plugin/reveal/plugin/highlight.js"></script>
+    <script src="./plugin/menu/menu.js"></script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    
+    <script>
+        // Инициализация Reveal.js
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ RevealMarkdown, RevealHighlight, RevealMenu ],
+            menu: {
+                useTextContentForMissingTitles: true,
+                markers: true,
+                loadIcons: false
+            }
+        });
+        
+        // Функция рендеринга формул KaTeX
+        function renderFormulas(element) {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(element, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+        
+        // Рендеринг при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFormulas(document.body);
+        });
+        
+        // Рендеринг при переключении слайдов
+        Reveal.on('slidechanged', event => {
+            renderFormulas(event.currentSlide);
+        });
+        
+        // ========== ПРОГРАММА РАСЧЁТА КРЕДИТА ==========
+        function calculateCredit() {
+            const P = parseFloat(document.getElementById('calc-p').value);
+            const i = parseFloat(document.getElementById('calc-i').value) / 100;
+            const days = parseInt(document.getElementById('calc-days').value);
+            const practice = document.getElementById('calc-practice').value;
+            const type = document.getElementById('calc-type').value;
+            
+            if (isNaN(P) || isNaN(i) || isNaN(days) || P < 0 || i < 0 || days < 30) {
+                document.getElementById('calc-result').innerHTML = 
+                    '<span style="color: #ff6b6b;">Ошибка! Заполните все поля корректно (срок от 30 дней)</span>';
+                return;
+            }
+            
+            let n;
+            if (practice === 'german' || practice === 'french') {
+                n = days / 360;
+            } else {
+                n = days / 365;
+            }
+            
+            let S;
+            if (type === 'simple') {
+                S = P * (1 + n * i);
+            } else {
+                S = P * Math.pow((1 + i), n);
+            }
+            
+            const practiceNames = {
+                'german': 'Германская',
+                'french': 'Французская',
+                'english': 'Английская'
+            };
+            const typeNames = {
+                'simple': 'Простые проценты',
+                'compound': 'Сложные проценты'
+            };
+            
+            document.getElementById('calc-result').innerHTML = `
+                <div style="font-size: 1.3em; color: #4da6ff;">
+                    S = ${S.toFixed(2)} руб.
+                </div>
+                <div style="font-size: 0.7em; color: #888; margin-top: 10px;">
+                    ${practiceNames[practice]} практика, ${typeNames[type]}<br>
+                    P = ${P.toFixed(2)} руб., i = ${(i*100).toFixed(2)}%, n = ${n.toFixed(4)} лет
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
