@@ -4,98 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Финансовая математика</title>
-    
-    <!-- Основные стили Reveal.js -->
+
     <link rel="stylesheet" href="./plugin/reveal/reveal.css">
-    <link rel="stylesheet" href="./plugin/reveal/theme/black.css">
-    
-    <!-- Стили плагинов -->
+    <link rel="stylesheet" href="./plugin/reveal/theme/dracula.css">
     <link rel="stylesheet" href="./plugin/reveal/plugin/highlight/monokai.css">
     <link rel="stylesheet" href="./plugin/menu/menu.css">
-    
-    <!-- Наша тема -->
     <link rel="stylesheet" href="./css/theme.css">
-    
-    <!-- KaTeX для формул -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 </head>
 <body>
+    <canvas id="matrix-canvas"></canvas>
+
     <div class="reveal">
         <div class="slides">
+
+            <!-- ============ ТИТУЛЬНЫЙ ============ -->
+            <section id="title-slide" data-menu-title="Титульный слайд" data-transition="fade">
+                <canvas id="wind-canvas"></canvas>
+                <div id="title-content">
+                    <h1>Финансовая математика</h1>
+                </div>
+            </section>
+
+            <!-- ============ РАЗДЕЛ: ТЕОРИЯ ============ -->
+            <section data-menu-title="Раздел: Теория" data-transition="zoom">
+                <h1 class="neon-text">ТЕОРИЯ</h1>
+                <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Основы финансовых вычислений</p>
+            </section>
+
+            <section data-markdown="./slides/definitions.md" data-menu-title="Определения" data-transition="convex"></section>
+            <section data-markdown="./slides/simple-accrual.md" data-menu-title="Простые: наращение" data-transition="convex"></section>
+            <section data-markdown="./slides/simple-discount.md" data-menu-title="Простые: дисконтирование" data-transition="concave"></section>
+            <section data-markdown="./slides/compound-accrual.md" data-menu-title="Сложные: наращение" data-transition="zoom"></section>
             
-            <!-- Слайд 1: Титульный -->
-            <section data-markdown="./slides/title.md"></section>
-            
-            <!-- Слайд 2: Определения -->
-            <section data-markdown="./slides/definitions.md"></section>
-            
-            <!-- Слайд 3: Формула наращения простые -->
-            <section data-markdown="./slides/simple-accrual.md"></section>
-            
-            <!-- Слайд 4: Формула дисконтирования простые -->
-            <section data-markdown="./slides/simple-discount.md"></section>
-            
-            <!-- Слайд 5: Формула наращения сложные -->
-            <section data-markdown="./slides/compound-accrual.md"></section>
-            
-            <!-- Слайд 6: Формула дисконтирования сложные -->
-            <section data-markdown="./slides/compound-discount.md"></section>
-            
-            <!-- Слайд 7: 3 практики -->
-            <section data-markdown="./slides/three-practices.md"></section>
-            
-            <!-- Слайды 8-19: Примеры -->
-            <section data-markdown="./slides/example1.md"></section>
-            <section data-markdown="./slides/example2.md"></section>
-            <section data-markdown="./slides/example3.md"></section>
-            <section data-markdown="./slides/example4.md"></section>
-            <section data-markdown="./slides/example5.md"></section>
-            <section data-markdown="./slides/example6.md"></section>
-            <section data-markdown="./slides/example7.md"></section>
-            <section data-markdown="./slides/example8.md"></section>
-            <section data-markdown="./slides/example9.md"></section>
-            <section data-markdown="./slides/example10.md"></section>
-            <section data-markdown="./slides/example11.md"></section>
-            <section data-markdown="./slides/example12.md"></section>
-            
-            <!-- Слайд 20: Описание таблицы дней -->
-            <section data-markdown="./slides/day-table.md"></section>
-            
-            <!-- Слайд 21: Программа генерации таблицы (iframe) -->
-<section style="padding: 10px 20px;">
-    <h2 style="font-size: 1.3em; margin-bottom: 10px;">ГЕНЕРАЦИЯ ТАБЛИЦЫ ПОРЯДКОВЫХ НОМЕРОВ ДНЕЙ</h2>
-    <iframe src="day-table-generator.html" 
-            style="width: 100%; height: 85vh; border: none; border-radius: 8px;">
-    </iframe>
-</section>
-            
-            <!-- Слайд 22: Программа расчёта кредита -->
-            <section>
+            <!-- Плавный переход к практикам (fade) -->
+            <section data-markdown="./slides/compound-discount.md" data-menu-title="Сложные: дисконтирование" data-transition="fade"></section>
+            <section data-markdown="./slides/three-practices.md" data-menu-title="Три практики начисления" data-transition="fade"></section>
+
+            <!-- ============ РАЗДЕЛ: ПРИМЕРЫ ============ -->
+            <section data-menu-title="Раздел: Примеры" data-transition="zoom">
+                <h1 class="neon-text">ПРИМЕРЫ</h1>
+                <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Практические расчёты и задачи</p>
+            </section>
+
+            <!-- Примеры 2–12: заголовок + контент -->
+            <section data-menu-title="Простые: наращение (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex2-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Простые проценты: Наращение</h3>
+                </div>
+            </section>
+            <section data-menu-title="Простые: наращение (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex2-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="2" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Простые: дисконтирование (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex3-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Простые проценты: Дисконтирование</h3>
+                </div>
+            </section>
+            <section data-menu-title="Простые: дисконтирование (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex3-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="3" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Сложные: наращение (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex4-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Сложные проценты: Наращение</h3>
+                </div>
+            </section>
+            <section data-menu-title="Сложные: наращение (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex4-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="4" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Сложные: дисконтирование (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex5-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Сложные проценты: Дисконтирование</h3>
+                </div>
+            </section>
+            <section data-menu-title="Сложные: дисконтирование (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex5-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="5" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Смешанный метод (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex6-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Смешанный метод начисления</h3>
+                </div>
+            </section>
+            <section data-menu-title="Смешанный метод (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex6-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="6" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Эквивалентность ставок (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex7-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Эквивалентность процентных ставок</h3>
+                </div>
+            </section>
+            <section data-menu-title="Эквивалентность ставок (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex7-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="7" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Средние ставки (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex8-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Средние процентные ставки</h3>
+                </div>
+            </section>
+            <section data-menu-title="Средние ставки (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex8-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="8" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Эффективная ставка (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex9-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Эффективная ставка</h3>
+                </div>
+            </section>
+            <section data-menu-title="Эффективная ставка (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex9-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="9" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Учёт инфляции (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex10-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Учёт инфляции</h3>
+                </div>
+            </section>
+            <section data-menu-title="Учёт инфляции (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex10-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="10" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="Аннуитеты (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex11-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Потоки платежей (Аннуитеты)</h3>
+                </div>
+            </section>
+            <section data-menu-title="Аннуитеты (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex11-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="11" class="example-content"></div>
+                </div>
+            </section>
+
+            <section data-menu-title="NPV (пример)" data-auto-animate data-transition="fade">
+                <div data-id="ex12-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
+                    <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Чистый приведённый доход (NPV)</h3>
+                </div>
+            </section>
+            <section data-menu-title="NPV (решение)" data-auto-animate data-transition="none" data-auto-animate-duration="0.9">
+                <div data-id="ex12-box" class="example-glass" style="display:block; width:fit-content; max-width:90%; margin:0 auto; padding:40px 60px;">
+                    <div data-example-content="12" class="example-content"></div>
+                </div>
+            </section>
+
+            <!-- ============ РАЗДЕЛ: ПРОГРАММЫ ============ -->
+            <section data-menu-title="Раздел: Программы" data-transition="zoom">
+                <h1 class="neon-text">ПРОГРАММЫ</h1>
+                <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Интерактивные инструменты</p>
+            </section>
+
+            <section data-markdown="./slides/day-table.md" data-menu-title="Таблица дней года" data-transition="slide"></section>
+
+            <!-- Обновленный слайд с таблицей (увеличен iframe и убраны лишние отступы) -->
+            <section data-menu-title="Генератор таблицы (демо)" style="padding:0;" data-transition="fade">
+                <iframe src="day-table-generator.html" title="Генератор таблицы дней года"
+                        style="width:100%; height:88vh; border:none; display:block; margin:0 auto; position:relative; z-index:10;"></iframe>
+            </section>
+
+            <section data-menu-title="Калькулятор кредита" data-transition="fade">
                 <h2>ПРОГРАММА РАСЧЁТА КРЕДИТА</h2>
                 <div class="calculator-container">
-                    <div class="calc-row">
-                        <label>P =</label>
-                        <input type="number" id="calc-p" placeholder="100000" min="0">
-                    </div>
-                    <div class="calc-row">
-                        <label>i =</label>
-                        <input type="number" id="calc-i" placeholder="10" min="0" step="0.1">
-                        <span>%</span>
-                    </div>
-                    <div class="calc-row">
-                        <label>Срок (дней):</label>
-                        <input type="number" id="calc-days" placeholder="180" min="30" max="3650">
-                    </div>
-                    <div class="calc-row">
-                        <label>Практика:</label>
+                    <div class="calc-row"><label>P =</label><input type="number" id="calc-p" placeholder="100000" min="0"></div>
+                    <div class="calc-row"><label>i =</label><input type="number" id="calc-i" placeholder="10" min="0" step="0.1"><span>%</span></div>
+                    <div class="calc-row"><label>Срок (дней):</label><input type="number" id="calc-days" placeholder="180" min="30" max="3650"></div>
+                    <div class="calc-row"><label>Практика:</label>
                         <select id="calc-practice">
                             <option value="german">Германская</option>
                             <option value="french">Французская</option>
                             <option value="english">Английская</option>
                         </select>
                     </div>
-                    <div class="calc-row">
-                        <label>Тип:</label>
+                    <div class="calc-row"><label>Тип:</label>
                         <select id="calc-type">
                             <option value="simple">Простые</option>
                             <option value="compound">Сложные</option>
@@ -105,118 +207,461 @@
                     <div id="calc-result" class="calc-result"></div>
                 </div>
             </section>
-            
-            <!-- Слайд 23: Исходный код -->
-            <section data-markdown="./slides/source-code.md"></section>
-            
-            <!-- Слайды 24-26: Весёлые картинки -->
-            <section data-markdown="./slides/funny1.md"></section>
-            <section data-markdown="./slides/funny2.md"></section>
-            <section data-markdown="./slides/funny3.md"></section>
-            
-            <!-- Слайд 27: Заключение -->
-            <section data-markdown="./slides/conclusion.md"></section>
-            
+
+            <section data-markdown="./slides/source-code.md" data-menu-title="Исходный код" data-transition="convex" class="compact-code"></section>
+
+            <section data-markdown="./slides/funny1.md" data-menu-title="Шутка 1" data-transition="fade"></section>
+            <section data-markdown="./slides/funny2.md" data-menu-title="Шутка 2" data-transition="zoom"></section>
+            <section data-markdown="./slides/funny3.md" data-menu-title="Шутка 3" data-transition="concave"></section>
+
+            <!-- ============ РАЗДЕЛ: ЗАКЛЮЧЕНИЕ ============ -->
+            <section data-menu-title="Раздел: Заключение" data-transition="zoom">
+                <h1 class="neon-text">ЗАКЛЮЧЕНИЕ</h1>
+                <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Спасибо за внимание!</p>
+            </section>
+
+            <section id="final-slide" data-menu-title="Финальный слайд" data-transition="fade">
+                <canvas id="confetti-canvas"></canvas>
+                <div>
+                    <h1 class="glitch" data-text="ФИНАЛ">ФИНАЛ</h1>
+                    <p class="fragment fade-up" style="margin-top:40px; color: var(--tn-cyan); font-size:1.5em;">Презентация завершена</p>
+                    <p class="fragment fade-up" style="color: var(--tn-muted);">Спасибо за просмотр!</p>
+                </div>
+            </section>
+
         </div>
     </div>
 
-    <!-- Скрипты Reveal.js -->
     <script src="./plugin/reveal/reveal.js"></script>
     <script src="./plugin/reveal/plugin/markdown.js"></script>
     <script src="./plugin/reveal/plugin/highlight.js"></script>
     <script src="./plugin/menu/menu.js"></script>
-    
-    <!-- KaTeX -->
+
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-    
+
     <script>
-        // Инициализация Reveal.js
-        Reveal.initialize({
-            hash: true,
-            slideNumber: true,
-            controls: true,
-            progress: true,
-            center: true,
-            transition: 'slide',
-            plugins: [ RevealMarkdown, RevealHighlight, RevealMenu ],
-            menu: {
-                useTextContentForMissingTitles: true,
-                markers: true,
-                loadIcons: false
+        /* ========== MATRIX RAIN ========== */
+        (function initMatrixRain() {
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height, columns;
+            const fontSize = 20;
+            const chars = '₽$€%0123456789ΣΔπ'.split('');
+            let drops = [];
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                columns = Math.floor(width / fontSize);
+                drops = [];
+                for (let x = 0; x < columns; x++) drops[x] = Math.random() * -100;
             }
-        });
-        
-        // Функция рендеринга формул KaTeX
-        function renderFormulas(element) {
-            if (typeof renderMathInElement !== 'undefined') {
-                renderMathInElement(element, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false}
-                    ],
-                    throwOnError: false
-                });
+            window.addEventListener('resize', resize);
+            resize();
+            function draw() {
+                ctx.fillStyle = 'rgba(26, 27, 38, 0.1)';
+                ctx.fillRect(0, 0, width, height);
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillStyle = Math.random() > 0.5 ? '#7dcfff' : '#ff7eb6';
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+            }
+            setInterval(draw, 50);
+        })();
+
+        /* ========== ПРЕДЗАГРУЗКА ПРИМЕРОВ ========== */
+        async function preloadExamples() {
+            const targets = document.querySelectorAll('[data-example-content]');
+            await Promise.all(Array.from(targets).map(async el => {
+                const idx = el.getAttribute('data-example-content');
+                try {
+                    const res = await fetch(`./slides/example${idx}.md`);
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    el.innerHTML = marked.parse(await res.text());
+                } catch (err) {
+                    el.innerHTML = '<p style="color:#fb4934; font-weight:bold;">Не удалось загрузить пример ' + idx + ' (' + err.message + ')</p>';
+                }
+            }));
+        }
+
+        /* ========== ТИТУЛЬНЫЙ СЛАЙД ========== */
+        function splitTextIntoSpans(container) {
+            const walk = (node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.nodeValue;
+                    const fragment = document.createDocumentFragment();
+                    for (let i = 0; i < text.length; i++) {
+                        const char = text[i];
+                        // Неразрывный пробел для предотвращения слипания слов
+                        const displayChar = char === ' ' ? '\u00A0' : char;
+                        
+                        const span = document.createElement('span');
+                        span.className = 'letter';
+                        span.textContent = displayChar;
+                        span.style.setProperty('--sway-y', (Math.random() * 15 + 5) + 'px');
+                        span.style.setProperty('--sway-rot', (Math.random() * 15 - 7.5) + 'deg');
+                        span.style.setProperty('--sway-delay', (Math.random() * 0.5) + 's');
+                        span.style.setProperty('--blow-delay', (Math.random() * 0.6) + 's');
+                        span.style.setProperty('--blow-rot-start', (Math.random() * 90 - 45) + 'deg');
+                        span.style.setProperty('--blow-rot-end', (Math.random() * 720) + 'deg');
+                        span.style.setProperty('--blow-y-end', (Math.random() * 40 - 20) + 'vh');
+                        fragment.appendChild(span);
+                    }
+                    node.parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    Array.from(node.childNodes).forEach(walk);
+                }
+            };
+            walk(container);
+        }
+
+        function fitTitleText() {
+            const slide = document.getElementById('title-slide');
+            const content = document.getElementById('title-content');
+            if (!slide || !content) return;
+            const h1 = content.querySelector('h1');
+            if (!h1) return;
+            
+            // Сбрасываем размер к максимальному
+            h1.style.fontSize = '4em';
+            
+            // Доступная ширина (90% от ширины слайда)
+            const availableWidth = slide.clientWidth * 0.9;
+            const currentWidth = h1.offsetWidth;
+            
+            if (currentWidth > availableWidth) {
+                const currentSize = parseFloat(window.getComputedStyle(h1).fontSize);
+                const newSize = Math.floor(currentSize * (availableWidth / currentWidth));
+                h1.style.fontSize = newSize + 'px';
             }
         }
-        
-        // Рендеринг при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            renderFormulas(document.body);
+
+        let originalTitleHTML = "";
+        let isTitleReady = false;
+        let isRevealReady = false;
+        let hasStartedInitialAnim = false;
+        let animationTimeouts = [];
+
+        fetch('./slides/title.md')
+            .then(r => { if (!r.ok) throw new Error('no title.md'); return r.text(); })
+            .then(md => {
+                const html = marked.parse(md);
+                originalTitleHTML = html;
+                const content = document.getElementById('title-content');
+                content.innerHTML = html;
+                splitTextIntoSpans(content);
+                fitTitleText();
+                isTitleReady = true;
+                tryStartInitialAnimation();
+            })
+            .catch(() => {
+                const content = document.getElementById('title-content');
+                if (!content.querySelector('h1')) content.innerHTML = '<h1>Финансовая математика</h1>';
+                splitTextIntoSpans(content);
+                fitTitleText();
+                isTitleReady = true;
+                tryStartInitialAnimation();
+            });
+
+        /* ========== ИНИЦИАЛИЗАЦИЯ REVEAL ========== */
+        preloadExamples().then(() => {
+            Reveal.initialize({
+                hash: true,
+                slideNumber: true,
+                controls: true,
+                progress: true,
+                center: true,
+                transition: 'slide',
+                transitionSpeed: 'default',
+                backgroundTransition: 'fade',
+                autoAnimate: true,
+                autoAnimateDuration: 0.9,
+                autoAnimateEasing: 'ease-in-out',
+                autoAnimateUnmatched: false,
+                plugins: [ RevealMarkdown, RevealHighlight, RevealMenu ],
+                menu: {
+                    useTextContentForMissingTitles: true,
+                    markers: true,
+                    loadIcons: false
+                }
+            });
+
+            function renderFormulas(element) {
+                if (typeof renderMathInElement !== 'undefined') {
+                    renderMathInElement(element, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '\\[', right: '\\]', display: true},
+                            {left: '$', right: '$', display: false},
+                            {left: '\\(', right: '\\)', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                }
+            }
+
+            Reveal.on('slidechanged', event => {
+                renderFormulas(event.currentSlide);
+                startCountUpAnimation(event.currentSlide);
+                if (event.currentSlide.id === 'title-slide') fitTitleText();
+            });
+
+            Reveal.on('resize', () => fitTitleText());
+
+            Reveal.on('ready', () => {
+                isRevealReady = true;
+                renderFormulas(Reveal.getCurrentSlide());
+                startCountUpAnimation(Reveal.getCurrentSlide());
+                tryStartInitialAnimation();
+                initConfetti();
+                fitTitleText();
+            });
         });
-        
-        // Рендеринг при переключении слайдов
-        Reveal.on('slidechanged', event => {
-            renderFormulas(event.currentSlide);
+
+        /* ========== COUNT-UP ========== */
+        function startCountUpAnimation(slide) {
+            if (!slide) return;
+            slide.querySelectorAll('.example-content p, .example-content h3').forEach(block => {
+                if (!(block.innerText.includes('Ответ') || block.innerText.includes('S ='))) return;
+                if (block.classList.contains('counted') || block.querySelector('.katex')) return;
+                block.classList.add('counted');
+                const text = block.innerText;
+                const match = text.match(/(\d+[\.,]?\d*)/);
+                if (!match) return;
+                const targetNum = parseFloat(match[1].replace(',', '.'));
+                if (isNaN(targetNum)) return;
+                const originalHTML = block.innerHTML;
+                const duration = 1500;
+                const startTime = performance.now();
+                const isFloat = match[1].includes('.') || match[1].includes(',');
+                function updateNum(time) {
+                    const progress = Math.min((time - startTime) / duration, 1);
+                    const currentNum = targetNum * (1 - Math.pow(1 - progress, 3));
+                    const displayNum = isFloat ? currentNum.toFixed(2) : Math.floor(currentNum);
+                    block.innerHTML = originalHTML.replace(match[1], displayNum);
+                    if (progress < 1) requestAnimationFrame(updateNum);
+                    else block.innerHTML = originalHTML;
+                }
+                requestAnimationFrame(updateNum);
+            });
+        }
+
+        /* ========== ВЕТЕР И ЛИСТЬЯ ========== */
+        (function initWind() {
+            const canvas = document.getElementById('wind-canvas');
+            const slide = document.getElementById('title-slide');
+            if (!canvas || !slide) return;
+            const ctx = canvas.getContext('2d');
+            let width, height, leaves = [], windLines = [], isWindActive = false;
+            function resize() {
+                const rect = slide.getBoundingClientRect();
+                width = canvas.width = rect.width;
+                height = canvas.height = rect.height;
+            }
+            window.addEventListener('resize', resize);
+            function startHurricane() {
+                isWindActive = true;
+                leaves = []; windLines = [];
+                for (let i = 0; i < 120; i++) {
+                    leaves.push({
+                        x: Math.random() * width - width, y: Math.random() * height,
+                        size: 12 + Math.random() * 18,
+                        speedX: 8 + Math.random() * 12, speedY: (Math.random() - 0.5) * 3,
+                        rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.08,
+                        color1: ['#7dcfff','#ff7eb6','#bb9af7','#c0caf5'][Math.floor(Math.random()*4)],
+                        color2: ['#5eead4','#fb4934','#9d8ce6','#565f89'][Math.floor(Math.random()*4)],
+                        swing: Math.random() * Math.PI * 2
+                    });
+                }
+                for (let i = 0; i < 60; i++) {
+                    windLines.push({
+                        x: Math.random() * width - width, y: Math.random() * height,
+                        length: 40 + Math.random() * 120, speedX: 15 + Math.random() * 20,
+                        opacity: 0.05 + Math.random() * 0.15
+                    });
+                }
+            }
+            function drawLeaf(ctx, x, y, size, rot, color1, color2) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(rot);
+                ctx.fillStyle = color1;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(size * 0.6, size * 0.4, 0, size);
+                ctx.fill();
+                ctx.fillStyle = color2;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(-size * 0.5, size * 0.4, 0, size);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, 0); ctx.lineTo(0, size); ctx.stroke();
+                ctx.restore();
+            }
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                if (isWindActive) {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.rect(0, 0, width, height);
+                    ctx.clip();
+                    ctx.strokeStyle = '#7dcfff';
+                    windLines.forEach(line => {
+                        ctx.globalAlpha = line.opacity;
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(line.x, line.y);
+                        ctx.lineTo(line.x + line.length, line.y);
+                        ctx.stroke();
+                        line.x += line.speedX;
+                        if (line.x > width) { line.x = -line.length; line.y = Math.random() * height; }
+                    });
+                    leaves.forEach(leaf => {
+                        ctx.globalAlpha = 0.95;
+                        drawLeaf(ctx, leaf.x, leaf.y, leaf.size, leaf.rot, leaf.color1, leaf.color2);
+                        leaf.x += leaf.speedX;
+                        leaf.y += leaf.speedY + Math.sin(leaf.swing) * 1.5;
+                        leaf.rot += leaf.rotSpeed;
+                        leaf.swing += 0.05;
+                        if (leaf.x > width + 50 || leaf.y > height + 50) {
+                            leaf.x = -50;
+                            leaf.y = Math.random() * height - 100;
+                        }
+                    });
+                    ctx.restore();
+                }
+                requestAnimationFrame(draw);
+            }
+            Reveal.on('ready', () => { resize(); draw(); });
+            window.startWindEffect = startHurricane;
+            window.resetWindEffect = function() { isWindActive = false; leaves = []; windLines = []; };
+        })();
+
+        /* ========== КОНФЕТТИ ========== */
+        function initConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height, particles = [], isActive = false;
+            function resize() {
+                const slide = document.getElementById('final-slide');
+                if (!slide) return;
+                const rect = slide.getBoundingClientRect();
+                width = canvas.width = rect.width;
+                height = canvas.height = rect.height;
+            }
+            window.addEventListener('resize', resize);
+            function spawnConfetti() {
+                isActive = true; particles = [];
+                for (let i = 0; i < 150; i++) {
+                    particles.push({
+                        x: Math.random() * width, y: Math.random() * -height,
+                        size: 5 + Math.random() * 10,
+                        speedX: (Math.random() - 0.5) * 4, speedY: 2 + Math.random() * 5,
+                        rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.2,
+                        color: ['#7dcfff','#ff7eb6','#bb9af7','#9ece6a','#e0af68'][Math.floor(Math.random()*5)]
+                    });
+                }
+            }
+            function draw() {
+                if (!isActive) { requestAnimationFrame(draw); return; }
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                    ctx.restore();
+                    p.x += p.speedX; p.y += p.speedY; p.rot += p.rotSpeed; p.speedY += 0.05;
+                    if (p.y > height) { p.y = -20; p.x = Math.random() * width; p.speedY = 2 + Math.random() * 5; }
+                });
+                requestAnimationFrame(draw);
+            }
+            Reveal.on('slidechanged', event => {
+                if (event.currentSlide.id === 'final-slide') { resize(); spawnConfetti(); }
+                else isActive = false;
+            });
+            resize(); draw();
+        }
+
+        /* ========== ТИТУЛЬНАЯ АНИМАЦИЯ ========== */
+        function resetTitleSlide() {
+            animationTimeouts.forEach(clearTimeout);
+            animationTimeouts = [];
+            const content = document.getElementById('title-content');
+            if (content) {
+                content.classList.remove('sway-wind', 'blow-away');
+                if (originalTitleHTML) {
+                    content.innerHTML = originalTitleHTML;
+                    splitTextIntoSpans(content);
+                    fitTitleText();
+                }
+            }
+            if (window.resetWindEffect) window.resetWindEffect();
+        }
+        function tryStartInitialAnimation() {
+            if (isTitleReady && isRevealReady && !hasStartedInitialAnim) {
+                const cur = Reveal.getCurrentSlide();
+                if (cur && cur.id === 'title-slide') {
+                    hasStartedInitialAnim = true;
+                    startTitleSequence();
+                }
+            }
+        }
+        function startTitleSequence() {
+            resetTitleSlide();
+            requestAnimationFrame(() => {
+                animationTimeouts.push(setTimeout(() => {
+                    if (window.startWindEffect) window.startWindEffect();
+                    const content = document.getElementById('title-content');
+                    if (!content) return;
+                    content.classList.add('sway-wind');
+                    animationTimeouts.push(setTimeout(() => {
+                        content.classList.remove('sway-wind');
+                        content.classList.add('blow-away');
+                        animationTimeouts.push(setTimeout(() => {
+                            if (Reveal.getCurrentSlide().id === 'title-slide') Reveal.next();
+                        }, 500));
+                    }, 2500));
+                }, 1000));
+            });
+        }
+        Reveal.on('slidechanged', (event) => {
+            if (event.currentSlide.id === 'title-slide') {
+                if (isTitleReady && isRevealReady) startTitleSequence();
+            } else {
+                resetTitleSlide();
+            }
         });
-        
-        // ========== ПРОГРАММА РАСЧЁТА КРЕДИТА ==========
+
+        /* ========== КАЛЬКУЛЯТОР ========== */
         function calculateCredit() {
             const P = parseFloat(document.getElementById('calc-p').value);
             const i = parseFloat(document.getElementById('calc-i').value) / 100;
             const days = parseInt(document.getElementById('calc-days').value);
             const practice = document.getElementById('calc-practice').value;
             const type = document.getElementById('calc-type').value;
-            
             if (isNaN(P) || isNaN(i) || isNaN(days) || P < 0 || i < 0 || days < 30) {
-                document.getElementById('calc-result').innerHTML = 
-                    '<span style="color: #ff6b6b;">Ошибка! Заполните все поля корректно (срок от 30 дней)</span>';
+                document.getElementById('calc-result').innerHTML =
+                    '<span style="color:#f7768e;">Ошибка! Заполните все поля (срок от 30 дней)</span>';
                 return;
             }
-            
-            let n;
-            if (practice === 'german' || practice === 'french') {
-                n = days / 360;
-            } else {
-                n = days / 365;
-            }
-            
-            let S;
-            if (type === 'simple') {
-                S = P * (1 + n * i);
-            } else {
-                S = P * Math.pow((1 + i), n);
-            }
-            
-            const practiceNames = {
-                'german': 'Германская',
-                'french': 'Французская',
-                'english': 'Английская'
-            };
-            const typeNames = {
-                'simple': 'Простые проценты',
-                'compound': 'Сложные проценты'
-            };
-            
+            const n = (practice === 'english') ? days / 365 : days / 360;
+            const S = (type === 'simple') ? P * (1 + n * i) : P * Math.pow((1 + i), n);
+            const practiceNames = { 'german': 'Германская', 'french': 'Французская', 'english': 'Английская' };
+            const typeNames = { 'simple': 'Простые проценты', 'compound': 'Сложные проценты' };
             document.getElementById('calc-result').innerHTML = `
-                <div style="font-size: 1.3em; color: #4da6ff;">
-                    S = ${S.toFixed(2)} руб.
-                </div>
-                <div style="font-size: 0.7em; color: #888; margin-top: 10px;">
+                <div style="font-size:1.3em; color:#9ece6a; font-weight:bold;">S = ${S.toFixed(2)} руб.</div>
+                <div style="font-size:0.7em; color:#565f89; margin-top:10px;">
                     ${practiceNames[practice]} практика, ${typeNames[type]}<br>
                     P = ${P.toFixed(2)} руб., i = ${(i*100).toFixed(2)}%, n = ${n.toFixed(4)} лет
-                </div>
-            `;
+                </div>`;
         }
     </script>
 </body>

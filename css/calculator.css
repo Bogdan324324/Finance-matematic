@@ -1,97 +1,104 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ============================================
+   CALCULATOR — IMPRESS.JS STYLE
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Sans:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background: #1a1a2e;
-    color: #ffffff;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #00000f;
+    color: rgb(102, 102, 102);
+    font-family: 'PT Sans', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
 }
 
 .container {
-    background: #16213e;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: white;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
     max-width: 600px;
     width: 90%;
 }
 
 h1 {
     text-align: center;
-    color: #4da6ff;
+    color: #222;
     margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.8em;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
+.form-group { margin-bottom: 20px; }
 
 label {
     display: block;
     margin-bottom: 8px;
-    color: #4da6ff;
-    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 input, select {
     width: 100%;
     padding: 12px;
-    border: 2px solid #4da6ff;
-    border-radius: 8px;
-    background: #1a1a2e;
-    color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
     font-size: 1em;
-    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 input:focus, select:focus {
     outline: none;
-    border-color: #ffffff;
+    border-color: #888;
 }
 
 button {
     width: 100%;
     padding: 15px;
-    background: #4da6ff;
-    color: #ffffff;
+    background: #333;
+    color: #fff;
     border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: #3d8fd9;
+    background: #555;
 }
 
 .result {
     margin-top: 30px;
     padding: 20px;
-    background: #1a1a2e;
-    border-radius: 8px;
+    background: #f4f4f4;
+    border-radius: 6px;
     text-align: center;
-    font-size: 1.5em;
-    color: #4da6ff;
+    font-size: 1.3em;
+    color: #c7254e;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .back-link {
     display: block;
     text-align: center;
     margin-top: 20px;
-    color: #4da6ff;
+    color: #555;
     text-decoration: none;
+    font-size: 0.9em;
 }
 
 .back-link:hover {
     text-decoration: underline;
+    color: #000;
 }

@@ -1,14 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ============================================
+   TABLE GENERATOR — IMPRESS.JS STYLE
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Sans:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background: #1a1a2e;
-    color: #ffffff;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    padding: 10px;
+    background: #00000f;
+    color: #333;
+    font-family: 'PT Sans', sans-serif;
+    padding: 2px; /* Минимальный отступ */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,74 +19,79 @@ body {
 
 h1 {
     text-align: center;
-    color: #4da6ff;
-    font-size: 1.4em;
-    margin-bottom: 8px;
+    color: #222;
+    font-size: 14px; /* Фиксированный маленький шрифт для заголовка */
+    margin: 2px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .controls {
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 button {
-    padding: 8px 20px;
-    background: #4da6ff;
-    color: #ffffff;
+    padding: 4px 12px;
+    background: #333;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 0.95em;
+    border-radius: 4px;
+    font-size: 12px;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: #3d8fd9;
+    background: #555;
 }
 
 .table-container {
     flex: 1;
-    background: #16213e;
-    border-radius: 8px;
-    padding: 5px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
 }
 
 table {
     width: 100%;
+    height: 130%; /* Растягиваем на всю доступную высоту */
     border-collapse: collapse;
-    font-size: 8px;
+    /* Динамический шрифт: подстраивается под экран, но не больше 13px */
+    font-size: clamp(8px, 2.0vh, 6px); 
     table-layout: fixed;
 }
 
 th, td {
-    padding: 2px 3px;
-    border: 1px solid #4da6ff;
+    padding: 0; /* Убираем отступы, чтобы строки были тонкими */
+    border: 1px solid #ddd;
     text-align: center;
-    color: #ffffff;
+    color: #333;
     white-space: nowrap;
+    vertical-align: middle;
+    line-height: 1.2; /* Уменьшаем межстрочный интервал */
 }
 
 th {
-    background: #4da6ff;
-    color: #1a1a2e;
+    background: #f4f4f4;
+    color: #222;
     font-weight: bold;
-    font-size: 7px;
 }
 
 tr:nth-child(even) {
-    background: rgba(77, 166, 255, 0.08);
+    background: #fafafa;
 }
 
 td:first-child {
     font-weight: bold;
-    background: rgba(77, 166, 255, 0.15);
+    background: #f0f0f0;
+    color: #555;
 }
 
 .info {
-    text-align: center;
-    margin-top: 5px;
-    color: #888;
-    font-size: 0.75em;
+    display: none; /* Скрываем подпись внизу, чтобы освободить место для таблицы */
 }
