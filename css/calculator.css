@@ -1,104 +1,220 @@
 /* ============================================
-   CALCULATOR — IMPRESS.JS STYLE
+   CALCULATOR — TOKYO NIGHT THEME
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Sans:wght@400;700&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background: #00000f;
-    color: rgb(102, 102, 102);
-    font-family: 'PT Sans', sans-serif;
+/* ========== СТИЛИ ДЛЯ ОТДЕЛЬНОЙ СТРАНИЦЫ (credit-calculator.html) ========== */
+body.standalone-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
-
-.container {
-    background: white;
-    padding: 40px 50px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-    max-width: 600px;
-    width: 90%;
-}
-
-h1 {
-    text-align: center;
-    color: #222;
-    margin-bottom: 30px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.8em;
-}
-
-.form-group { margin-bottom: 20px; }
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-    font-weight: bold;
-    font-size: 1em;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #fff;
-    color: #333;
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: #888;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #555;
-}
-
-.result {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f4f4f4;
-    border-radius: 6px;
-    text-align: center;
-    font-size: 1.3em;
-    color: #c7254e;
-    font-family: 'Open Sans', sans-serif;
+    background-color: #1a1b26; /* Фон темы */
+    background-image: radial-gradient(circle at center, #24283b 0%, #1a1b26 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #c0caf5;
 }
 
 .back-link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #555;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #7dcfff;
     text-decoration: none;
-    font-size: 0.9em;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 1px solid rgba(125, 207, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(36, 40, 59, 0.8);
+    transition: all 0.3s;
 }
 
 .back-link:hover {
-    text-decoration: underline;
-    color: #000;
+    background: #7dcfff;
+    color: #1a1b26;
+}
+
+/* ============================================
+   СТИЛИ КАЛЬКУЛЯТОРА (Общие для index и standalone)
+   ============================================ */
+.loan-calc-container {
+    display: flex;
+    gap: 40px;
+    background: rgba(36, 40, 59, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(125, 207, 255, 0.2);
+    border-radius: 16px;
+    padding: 25px 30px;
+    max-width: 1000px;
+    width: 95%;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.5);
+}
+
+.loan-inputs {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.loan-input-group label, .loan-select-col label {
+    color: #565f89;
+    font-size: 0.75em;
+    margin-bottom: 4px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.loan-big-input, .loan-select {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(125, 207, 255, 0.15);
+    border-radius: 8px;
+    color: #c0caf5;
+    font-size: 1.1em;
+    padding: 10px 12px;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.loan-big-input:focus, .loan-select:focus {
+    border-color: #7dcfff;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 12px rgba(125,207,255,0.2);
+}
+
+.loan-selects-row {
+    display: flex;
+    gap: 15px;
+}
+
+.loan-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%237dcfff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 8px auto;
+    padding-right: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    text-overflow: ellipsis;
+}
+
+.loan-input-rate {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(125, 207, 255, 0.15);
+    border-radius: 8px;
+    padding-right: 12px;
+    transition: all 0.3s;
+}
+
+.loan-input-rate:focus-within {
+    border-color: #7dcfff;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 12px rgba(125,207,255,0.2);
+}
+
+.loan-input-rate .loan-big-input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.loan-input-rate span {
+    color: #7dcfff;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Правая колонка */
+.loan-results {
+    flex: 1;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 25px 25px 25px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.loan-results h3 {
+    color: #c0caf5;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.loan-monthly {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(125, 207, 255, 0.1);
+}
+
+.loan-monthly span {
+    color: #565f89;
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+
+.loan-monthly strong {
+    font-size: 1.6em;
+    color: #7dcfff;
+    line-height: 1.1;
+    font-family: 'Open Sans', sans-serif;
+    word-break: break-all;
+}
+
+.loan-result-list {
+    margin-bottom: 20px;
+}
+
+.loan-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #565f89;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+.loan-result-item strong {
+    color: #c0caf5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95em;
+    margin-left: 10px;
+    text-align: right;
+    word-break: break-all;
+}
+
+.loan-progress-bar {
+    height: 8px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: auto;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.loan-progress-fill {
+    height: 100%;
+    background: #9ece6a;
+    border-radius: 4px;
+    transition: width 0.4s ease-out;
+    box-shadow: 0 0 10px rgba(158, 206, 106, 0.3);
 }
