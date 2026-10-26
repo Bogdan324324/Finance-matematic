@@ -1,17 +1,27 @@
 /* ============================================
-   TABLE GENERATOR — IMPRESS.JS STYLE
+   TABLE GENERATOR — TOKYO NIGHT THEME
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Sans:wght@400;700&display=swap');
 
+:root {
+    --tn-bg: #1a1b26;
+    --tn-panel: #24283b;
+    --tn-glass-border: rgba(125, 207, 255, 0.2);
+    --tn-fg: #c0caf5;
+    --tn-cyan: #7dcfff;
+    --tn-pink: #ff7eb6;
+    --tn-purple: #bb9af7;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background: #00000f;
-    color: #333;
+    background: var(--tn-bg);
+    color: var(--tn-fg);
     font-family: 'PT Sans', sans-serif;
-    padding: 2px; /* Минимальный отступ */
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -19,79 +29,98 @@ body {
 
 h1 {
     text-align: center;
-    color: #222;
-    font-size: 14px; /* Фиксированный маленький шрифт для заголовка */
-    margin: 2px 0;
+    color: var(--tn-cyan);
+    font-size: 16px;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(125, 207, 255, 0.4);
+    width: 100%;
+    flex-shrink: 0;
 }
 
 .controls {
     text-align: center;
-    margin-bottom: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 button {
-    padding: 4px 12px;
-    background: #333;
-    color: #fff;
+    padding: 6px 20px;
+    background: var(--tn-cyan);
+    color: var(--tn-bg);
     border: none;
-    border-radius: 4px;
-    font-size: 12px;
+    border-radius: 6px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: inline-block;
 }
 
 button:hover {
-    background: #555;
+    background: var(--tn-pink);
+    transform: translateY(-2px);
 }
 
 .table-container {
     flex: 1;
-    background: white;
-    border-radius: 4px;
+    min-height: 0;
+    background: var(--tn-panel);
+    border: 1px solid var(--tn-glass-border);
+    border-radius: 8px;
+    margin: 0 10px 10px 10px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 table {
     width: 100%;
-    height: 130%; /* Растягиваем на всю доступную высоту */
+    height: 100%;
     border-collapse: collapse;
-    /* Динамический шрифт: подстраивается под экран, но не больше 13px */
-    font-size: clamp(8px, 2.0vh, 6px); 
     table-layout: fixed;
 }
 
 th, td {
-    padding: 0; /* Убираем отступы, чтобы строки были тонкими */
-    border: 1px solid #ddd;
+    padding: 0;
+    border: 1px solid rgba(125, 207, 255, 0.1);
     text-align: center;
-    color: #333;
-    white-space: nowrap;
     vertical-align: middle;
-    line-height: 1.2; /* Уменьшаем межстрочный интервал */
+    font-size: clamp(8px, 1.5vh, 14px);
+    line-height: 1.2;
+    transition: background 0.2s;
 }
 
 th {
-    background: #f4f4f4;
-    color: #222;
+    background: rgba(125, 207, 255, 0.1);
+    color: var(--tn-cyan);
     font-weight: bold;
+    border-bottom: 2px solid var(--tn-cyan);
+    letter-spacing: 0.5px;
 }
 
 tr:nth-child(even) {
-    background: #fafafa;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+tr:hover td {
+    background: rgba(125, 207, 255, 0.08);
+}
+
+td {
+    color: var(--tn-fg);
 }
 
 td:first-child {
     font-weight: bold;
-    background: #f0f0f0;
-    color: #555;
+    color: var(--tn-purple);
+    background: rgba(187, 154, 247, 0.05);
 }
 
-.info {
-    display: none; /* Скрываем подпись внизу, чтобы освободить место для таблицы */
-}
+.info { display: none; }

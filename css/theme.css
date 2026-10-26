@@ -113,6 +113,27 @@ html, body {
     box-sizing: border-box;
 }
 
+/* ========== ИЗОБРАЖЕНИЯ ========== */
+.reveal img {
+    max-width: 75%;
+    max-height: 42vh; /* Уменьшили, чтобы текст под картинками влезал */
+    margin: 10px auto;
+    display: block;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+.divider-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.divider-img svg {
+    max-width: 320px;
+    height: auto;
+}
+
 /* ========== СПИСКИ ========== */
 .reveal ul, .reveal ol { margin: 8px 0; padding-left: 30px; }
 .reveal ul li, .reveal ol li { margin-bottom: 6px; line-height: 1.5; }
@@ -137,12 +158,11 @@ html, body {
 #title-content {
     position: relative; z-index: 2;
     text-align: center; color: #ffffff;
-    width: 100%; /* Увеличили до 100%, чтобы было больше места */
+    width: 100%;
 }
 #title-content h1 {
     font-size: 4em; margin: 0;
     text-shadow: 0 0 30px rgba(125, 207, 255, 0.5);
-    /* ЖЕСТКО ЗАПРЕЩАЕМ ПЕРЕНОС СТРОК */
     white-space: nowrap !important; 
     display: inline-block;
     width: max-content;
@@ -232,81 +252,217 @@ html, body {
 .example-content th { background: var(--tn-panel); color: var(--tn-cyan); }
 
 /* ============================================
-   ВСТРОЕННЫЙ КАЛЬКУЛЯТОР
+   КАЛЬКУЛЯТОР (ИДЕАЛЬНЫЕ ПРОПОРЦИИ)
    ============================================ */
-.calculator-container {
+.loan-calc-container {
+    display: flex;
+    gap: 40px; /* Увеличенный зазор между колонками */
     background: var(--tn-glass);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--tn-glass-border);
-    padding: 20px 25px;
     border-radius: 16px;
-    max-width: 520px;
-    margin: 10px auto;
+    padding: 25px 30px;
+    max-width: 1000px;
+    width: 95%;
+    margin: 0 auto;
     text-align: left;
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.5);
 }
-.calc-row {
-    display: flex; align-items: center;
-    margin-bottom: 10px; gap: 10px;
-}
-.calc-row label {
-    color: var(--tn-purple);
-    font-size: 0.85em;
-    min-width: 110px;
-    font-weight: bold;
-}
-.calc-row input, .calc-row select {
-    flex: 1;
-    padding: 6px 10px;
-    border: 1px solid var(--tn-glass-border);
-    border-radius: 6px;
-    background: rgba(0,0,0,0.5);
-    color: var(--tn-fg);
-    font-size: 0.8em;
-}
-.calc-row input:focus, .calc-row select:focus {
-    outline: none;
-    border-color: var(--tn-cyan);
-    box-shadow: 0 0 8px rgba(125,207,255,0.5);
-}
-.calc-row span { color: var(--tn-fg); font-size: 0.85em; }
-.calculator-container button {
-    width: 100%;
-    padding: 10px;
-    background: var(--tn-cyan);
-    color: var(--tn-bg);
-    border: none;
-    border-radius: 6px;
-    font-size: 0.95em;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s, transform 0.15s;
-}
-.calculator-container button:hover { background: var(--tn-pink); transform: translateY(-1px); }
-.calc-result {
-    margin-top: 15px;
-    padding: 12px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 8px;
-    text-align: center;
-    min-height: 50px;
+
+/* Левая колонка (Ввод) */
+.loan-inputs {
+    flex: 0 0 45%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border: 1px solid var(--tn-glass-border);
-    font-size: 0.85em;
+    gap: 15px;
+}
+
+.loan-input-group label, .loan-select-col label {
+    color: var(--tn-muted);
+    font-size: 0.75em;
+    margin-bottom: 4px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.loan-big-input, .loan-select {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(125, 207, 255, 0.15);
+    border-radius: 8px;
+    color: var(--tn-fg);
+    font-size: 1.1em;
+    padding: 10px 12px;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.loan-big-input:focus, .loan-select:focus {
+    border-color: var(--tn-cyan);
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 12px rgba(125,207,255,0.2);
+}
+
+.loan-selects-row {
+    display: flex;
+    gap: 15px;
+}
+
+.loan-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%237dcfff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 8px auto;
+    padding-right: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    text-overflow: ellipsis;
+}
+
+.loan-input-rate {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(125, 207, 255, 0.15);
+    border-radius: 8px;
+    padding-right: 12px;
+    transition: all 0.3s;
+}
+
+.loan-input-rate:focus-within {
+    border-color: var(--tn-cyan);
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 12px rgba(125,207,255,0.2);
+}
+
+.loan-input-rate .loan-big-input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.loan-input-rate span {
+    color: var(--tn-cyan);
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Правая колонка (Результаты) */
+.loan-results {
+    flex: 1;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    /* Сдвигаем контент правее за счет левого отступа */
+    padding: 25px 25px 25px 35px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.loan-results h3 {
+    color: var(--tn-fg);
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.loan-monthly {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(125, 207, 255, 0.1);
+}
+
+.loan-monthly span {
+    color: var(--tn-muted);
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+
+.loan-monthly strong {
+    font-size: 1.6em;
+    color: var(--tn-cyan);
+    line-height: 1.1;
+    font-family: 'Open Sans', sans-serif;
+    word-break: break-all;
+}
+
+.loan-result-list {
+    margin-bottom: 20px;
+}
+
+.loan-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--tn-muted);
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+.loan-result-item strong {
+    color: var(--tn-fg);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95em;
+    margin-left: 10px;
+    text-align: right;
+    word-break: break-all;
+}
+
+/* Прогресс-бар */
+.loan-progress-bar {
+    height: 8px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: auto;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.loan-progress-fill {
+    height: 100%;
+    background: var(--tn-green);
+    border-radius: 4px;
+    transition: width 0.4s ease-out;
+    box-shadow: 0 0 10px rgba(158, 206, 106, 0.3);
 }
 
 /* ============================================
-   ИСХОДНЫЙ КОД
+   ИСХОДНЫЙ КОД (УВЕЛИЧЕННЫЙ ШРИФТ)
    ============================================ */
-.compact-code { font-size: 0.5em !important; padding: 10px 20px !important; }
-.compact-code pre { font-size: 0.75em !important; padding: 5px !important; margin: 5px 0 !important; }
-.compact-code code { font-size: 0.85em !important; color: var(--tn-green) !important; }
-.compact-code h2 { font-size: 1.3em !important; margin-bottom: 15px !important; color: var(--tn-pink) !important; }
-.compact-code h3 { font-size: 1em !important; margin: 10px 0 5px 0 !important; color: var(--tn-cyan) !important; }
+.compact-code { 
+    font-size: 0.9em !important; 
+    padding: 10px 20px !important; 
+}
+.compact-code pre { 
+    font-size: 0.85em !important; 
+    padding: 12px !important; 
+    margin: 10px 0 !important; 
+    line-height: 1.3 !important;
+    max-height: 75vh; 
+}
+.compact-code code { 
+    font-size: 1em !important; 
+    color: var(--tn-green) !important; 
+}
+.compact-code h2 { 
+    font-size: 1.6em !important; 
+    margin-bottom: 15px !important; 
+    color: var(--tn-pink) !important; 
+}
+.compact-code h3 { 
+    font-size: 1.2em !important; 
+    margin: 15px 0 5px 0 !important; 
+    color: var(--tn-cyan) !important; 
+}
 
 /* ============================================
    ФИНАЛЬНЫЙ СЛАЙД
@@ -385,5 +541,8 @@ html, body {
     .reveal table { font-size: 0.45em; }
     .neon-text { font-size: 3em !important; }
     .glitch { font-size: 2.4em; }
-    .calculator-container { padding: 15px; }
+    
+    .loan-calc-container {
+        flex-direction: column;
+    }
 }

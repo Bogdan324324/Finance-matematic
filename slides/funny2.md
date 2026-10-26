@@ -1,5 +1,7 @@
 ## ПРОЦЕНТЫ КАПАЮТ
 
-![Деньги растут](./images/passive-income.jpg)
+![Деньги растут](/images/passive-income.jpg)
 
-*Пассивный доход — это круто!* 📈
+<p class="fragment fade-up" style="text-align: center; font-size: 1.2em; color: var(--tn-cyan); margin-top: 15px;">
+    <strong>Пассивный доход — это круто!</strong>
+</p>

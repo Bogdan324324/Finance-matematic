@@ -28,9 +28,9 @@
             </section>
 
             <!-- ============ РАЗДЕЛ: ТЕОРИЯ ============ -->
+            <!-- Убран текст "Основы финансовых вычислений" -->
             <section data-menu-title="Раздел: Теория" data-transition="zoom">
                 <h1 class="neon-text">ТЕОРИЯ</h1>
-                <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Основы финансовых вычислений</p>
             </section>
 
             <section data-markdown="./slides/definitions.md" data-menu-title="Определения" data-transition="convex"></section>
@@ -48,7 +48,7 @@
                 <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Практические расчёты и задачи</p>
             </section>
 
-            <!-- Примеры 2–12: заголовок + контент -->
+            <!-- Примеры (2–12) -->
             <section data-menu-title="Простые: наращение (пример)" data-auto-animate data-transition="fade">
                 <div data-id="ex2-box" class="glass-panel" style="display:block; width:fit-content; margin:0 auto; padding:20px 44px;">
                     <h3 style="margin:0; color: var(--tn-purple); white-space:nowrap; font-weight:bold;">Простые проценты: Наращение</h3>
@@ -173,38 +173,88 @@
             <!-- ============ РАЗДЕЛ: ПРОГРАММЫ ============ -->
             <section data-menu-title="Раздел: Программы" data-transition="zoom">
                 <h1 class="neon-text">ПРОГРАММЫ</h1>
-                <p class="fragment fade-up" style="color: var(--tn-muted); font-size: 1.2em;">Интерактивные инструменты</p>
             </section>
 
             <section data-markdown="./slides/day-table.md" data-menu-title="Таблица дней года" data-transition="slide"></section>
 
-            <!-- Обновленный слайд с таблицей (увеличен iframe и убраны лишние отступы) -->
-            <section data-menu-title="Генератор таблицы (демо)" style="padding:0;" data-transition="fade">
+            <!-- Генератор таблицы (на весь экран) -->
+            <section data-menu-title="Генератор таблицы (демо)" style="padding:0; height:100%;" data-transition="fade">
                 <iframe src="day-table-generator.html" title="Генератор таблицы дней года"
-                        style="width:100%; height:88vh; border:none; display:block; margin:0 auto; position:relative; z-index:10;"></iframe>
+                        style="width:100%; height:100%; border:none; display:block; position:absolute; top:0; left:0; z-index:10;"></iframe>
             </section>
 
+            <!-- ============ КАЛЬКУЛЯТОР (С ВАЛИДАЦИЕЙ) ============ -->
             <section data-menu-title="Калькулятор кредита" data-transition="fade">
-                <h2>ПРОГРАММА РАСЧЁТА КРЕДИТА</h2>
-                <div class="calculator-container">
-                    <div class="calc-row"><label>P =</label><input type="number" id="calc-p" placeholder="100000" min="0"></div>
-                    <div class="calc-row"><label>i =</label><input type="number" id="calc-i" placeholder="10" min="0" step="0.1"><span>%</span></div>
-                    <div class="calc-row"><label>Срок (дней):</label><input type="number" id="calc-days" placeholder="180" min="30" max="3650"></div>
-                    <div class="calc-row"><label>Практика:</label>
-                        <select id="calc-practice">
-                            <option value="german">Германская</option>
-                            <option value="french">Французская</option>
-                            <option value="english">Английская</option>
-                        </select>
+                <div class="loan-calc-container">
+                    <!-- Левая колонка: Ввод данных -->
+                    <div class="loan-inputs">
+                        <div class="loan-input-group">
+                            <label>Сумма кредита P (руб.)</label>
+                            <input type="number" id="calc-p" value="100000" class="loan-big-input" oninput="calculateCredit()">
+                        </div>
+                        
+                        <div class="loan-input-group">
+                            <label>Ставка i (%)</label>
+                            <div class="loan-input-rate">
+                                <input type="number" id="calc-i" value="10" class="loan-big-input" step="0.1" oninput="calculateCredit()">
+                                <span>%</span>
+                            </div>
+                        </div>
+
+                        <div class="loan-input-group">
+                            <label>Срок (дней): от 30 до 3650</label>
+                            <input type="number" id="calc-days" value="180" class="loan-big-input" min="30" max="3650" oninput="calculateCredit()">
+                        </div>
+
+                        <div class="loan-selects-row">
+                            <!-- Практике даем чуть больше места (flex: 1.5) -->
+                            <div class="loan-select-col" style="flex: 1.5;">
+                                <label>Практика</label>
+                                <select id="calc-practice" class="loan-select" onchange="calculateCredit()">
+                                    <option value="german">Германская</option>
+                                    <option value="french">Французская</option>
+                                    <option value="english">Английская</option>
+                                </select>
+                            </div>
+                            <!-- Типу даем меньше (flex: 1) -->
+                            <div class="loan-select-col" style="flex: 1;">
+                                <label>Тип</label>
+                                <select id="calc-type" class="loan-select" onchange="calculateCredit()">
+                                    <option value="simple">Простые</option>
+                                    <option value="compound">Сложные</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="calc-row"><label>Тип:</label>
-                        <select id="calc-type">
-                            <option value="simple">Простые</option>
-                            <option value="compound">Сложные</option>
-                        </select>
+
+                    <!-- Правая колонка: Результаты -->
+                    <div class="loan-results">
+                        <h3>Результаты расчета</h3>
+                        
+                        <div class="loan-monthly">
+                            <span>Наращенная сумма (S)</span>
+                            <strong id="res-s">110 000 ₽</strong>
+                        </div>
+                        
+                        <div class="loan-result-list">
+                            <div class="loan-result-item">
+                                <span>Первоначальная сумма (P)</span>
+                                <strong id="res-p">100 000 ₽</strong>
+                            </div>
+                            <div class="loan-result-item">
+                                <span>Сумма процентов (I)</span>
+                                <strong id="res-i">10 000 ₽</strong>
+                            </div>
+                            <div class="loan-result-item">
+                                <span>Срок в годах (n)</span>
+                                <strong id="res-n">0.5000</strong>
+                            </div>
+                        </div>
+
+                        <div class="loan-progress-bar">
+                            <div class="loan-progress-fill" id="res-progress" style="width: 90%;"></div>
+                        </div>
                     </div>
-                    <button onclick="calculateCredit()">Рассчитать</button>
-                    <div id="calc-result" class="calc-result"></div>
                 </div>
             </section>
 
@@ -296,7 +346,6 @@
                     const fragment = document.createDocumentFragment();
                     for (let i = 0; i < text.length; i++) {
                         const char = text[i];
-                        // Неразрывный пробел для предотвращения слипания слов
                         const displayChar = char === ' ' ? '\u00A0' : char;
                         
                         const span = document.createElement('span');
@@ -326,10 +375,7 @@
             const h1 = content.querySelector('h1');
             if (!h1) return;
             
-            // Сбрасываем размер к максимальному
             h1.style.fontSize = '4em';
-            
-            // Доступная ширина (90% от ширины слайда)
             const availableWidth = slide.clientWidth * 0.9;
             const currentWidth = h1.offsetWidth;
             
@@ -642,27 +688,57 @@
 
         /* ========== КАЛЬКУЛЯТОР ========== */
         function calculateCredit() {
-            const P = parseFloat(document.getElementById('calc-p').value);
-            const i = parseFloat(document.getElementById('calc-i').value) / 100;
-            const days = parseInt(document.getElementById('calc-days').value);
+            const P = parseFloat(document.getElementById('calc-p').value) || 0;
+            const rate = parseFloat(document.getElementById('calc-i').value) || 0;
+            const i = rate / 100;
+            
+            const daysInput = document.getElementById('calc-days');
+            let days = parseInt(daysInput.value);
+            
+            if (isNaN(days) || days < 30 || days > 3650) {
+                document.getElementById('res-s').textContent = "Укажите другой срок";
+                document.getElementById('res-s').style.color = "var(--tn-red)";
+                document.getElementById('res-s').style.fontSize = "1.1em";
+                document.getElementById('res-p').textContent = "—";
+                document.getElementById('res-i').textContent = "—";
+                document.getElementById('res-n').textContent = "—";
+                document.getElementById('res-progress').style.width = "0%";
+                return;
+            } else {
+                document.getElementById('res-s').style.color = "var(--tn-cyan)";
+                document.getElementById('res-s').style.fontSize = "1.6em";
+            }
+            
             const practice = document.getElementById('calc-practice').value;
             const type = document.getElementById('calc-type').value;
-            if (isNaN(P) || isNaN(i) || isNaN(days) || P < 0 || i < 0 || days < 30) {
-                document.getElementById('calc-result').innerHTML =
-                    '<span style="color:#f7768e;">Ошибка! Заполните все поля (срок от 30 дней)</span>';
-                return;
+            
+            let n = 0;
+            if (practice === 'english') {
+                n = days / 365;
+            } else {
+                n = days / 360;
             }
-            const n = (practice === 'english') ? days / 365 : days / 360;
-            const S = (type === 'simple') ? P * (1 + n * i) : P * Math.pow((1 + i), n);
-            const practiceNames = { 'german': 'Германская', 'french': 'Французская', 'english': 'Английская' };
-            const typeNames = { 'simple': 'Простые проценты', 'compound': 'Сложные проценты' };
-            document.getElementById('calc-result').innerHTML = `
-                <div style="font-size:1.3em; color:#9ece6a; font-weight:bold;">S = ${S.toFixed(2)} руб.</div>
-                <div style="font-size:0.7em; color:#565f89; margin-top:10px;">
-                    ${practiceNames[practice]} практика, ${typeNames[type]}<br>
-                    P = ${P.toFixed(2)} руб., i = ${(i*100).toFixed(2)}%, n = ${n.toFixed(4)} лет
-                </div>`;
+            
+            let S = 0;
+            if (type === 'simple') {
+                S = P * (1 + n * i);
+            } else {
+                S = P * Math.pow((1 + i), n);
+            }
+            
+            const I = S - P;
+            const formatMoney = (val) => Math.round(val).toLocaleString('ru-RU') + ' ₽';
+            
+            document.getElementById('res-s').textContent = formatMoney(S);
+            document.getElementById('res-p').textContent = formatMoney(P);
+            document.getElementById('res-i').textContent = formatMoney(I);
+            document.getElementById('res-n').textContent = n.toFixed(4);
+            
+            const progressPercent = S > 0 ? (P / S) * 100 : 0;
+            document.getElementById('res-progress').style.width = progressPercent + '%';
         }
+
+        document.addEventListener('DOMContentLoaded', calculateCredit);
     </script>
 </body>
 </html>
